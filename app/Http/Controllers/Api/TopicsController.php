@@ -74,4 +74,10 @@ class TopicsController extends Controller
             ->paginate($request->pageSize);
         return $this->responsePaginate($topics, new TopicTransformer());
     }
+
+    public function show(Request $request)
+    {
+        $topic = Topic::find($request->id);
+        return $this->responseItem($topic, new TopicTransformer());
+    }
 }
