@@ -29,8 +29,14 @@ $api->version('v1', [
         'expires' => config('api.rate_limits.sign.expires'),
     ], function ($api) {
         // 用户注册
-        $api->post('users', 'UsersController@store')->name('api.users.store');
+        $api->post('users/create', 'UsersController@store')->name('api.users.store');
         // 图片验证码
-        $api->get('captchas', 'CaptchasController@show')->name('api.captchas.show');
+        $api->get('captchas/get', 'CaptchasController@show')->name('api.captchas.show');
+        // 登陆
+        $api->post('login', 'AuthorizationsController@store')->name('api.authorizations.store');
+        // 刷新token
+        $api->post('authorizations/update', 'AuthorizationsController@update')->name('api.authorizations.update');
+        // 删除token
+        $api->post('authorizations/delete', 'AuthorizationsController@destroy')->name('api.authorizations.destroy');
     });
 });
