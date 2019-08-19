@@ -37,8 +37,11 @@ $api->version('v1', [
         $api->post('authorizations/update', 'AuthorizationsController@update')->name('api.authorizations.update');
         // 删除token
         $api->post('authorizations/delete', 'AuthorizationsController@destroy')->name('api.authorizations.destroy');
-        // 游客可以访问的接口
+        // 话题分类列表
         $api->get('categories', 'CategoriesController@index')->name('api.categories.index');
+        // 话题列表
+        $api->get('topics', 'TopicsController@index')->name('api.topics.index');
+        $api->get('topics/user', 'TopicsController@userIndex')->name('api.topics.user.index');
 
         // 需要token验证的接口
         $api->group(['middleware' => 'api.auth'], function ($api){

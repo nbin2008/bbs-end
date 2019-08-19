@@ -46,4 +46,32 @@ class TopicsController extends Controller
         $topic->delete();
         return $this->responseSuccess('删除成功');
     }
+
+    public function index(Request $request, Topic $topic)
+    {
+        $query = $topic->query();
+        if ($categoryId = $request->category_id) {
+            $query->where('category_id', $categoryId);
+        }
+
+        switch ($request->order) {
+            case 'recent':
+                $query->recent();
+                break;
+            default:
+                $query->recentReplied();
+                break;
+        }
+
+        $topics = $query->paginate($request->pageSize);
+        return $this->responsePaginate($topics, new TopicTransformer());
+    }
+
+    public function userIndex(Request $request)
+    {
+        $user_id = $request->user_id;
+        $topics = Topic::where('user_id', $user_id)->recent()
+            ->paginate($request->pageSize);
+        return $this->responsePaginate($topics, new TopicTransformer());
+    }
 }
