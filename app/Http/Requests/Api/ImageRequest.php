@@ -2,9 +2,9 @@
 
 namespace App\Http\Requests\Api;
 
-use Dingo\Api\Http\FormRequest;
+use Illuminate\Foundation\Http\FormRequest;
 
-class UserRequest extends FormRequest
+class ImageRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,11 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'captcha_key' => 'required',
-            'captcha_code' => 'required',
-            'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name',
-            'email' => 'required|email',
-            'password' => 'required|string|min:6',
+            'type' => 'required|string|in:avatar,topic',
+            'image' => 'required|mimes:jpeg,bmp,png,gif',
         ];
     }
 }
