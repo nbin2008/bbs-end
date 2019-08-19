@@ -48,6 +48,10 @@ $api->version('v1', [
             $api->post('user/update', 'UsersController@update')->name('api.user.update');
             // 图片上传
             $api->post('images/upload', 'ImagesController@store')->name('api.images.store');
+            // 发布话题
+            $api->post('topics/store', 'TopicsController@store')->name('api.topics.store');
+            // 修改话题
+            $api->post('topics/update', 'TopicsController@update')->name('api.topics.update');
         });
     });
 });
