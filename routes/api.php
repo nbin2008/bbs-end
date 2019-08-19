@@ -52,6 +52,8 @@ $api->version('v1', [
             $api->post('topics/store', 'TopicsController@store')->name('api.topics.store');
             // 修改话题
             $api->post('topics/update', 'TopicsController@update')->name('api.topics.update');
+            // 删除话题
+            $api->post('topics/delete', 'TopicsController@destroy')->name('api.topics.destroy');
         });
     });
 });

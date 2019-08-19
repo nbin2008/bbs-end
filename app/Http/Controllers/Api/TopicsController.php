@@ -35,4 +35,15 @@ class TopicsController extends Controller
         $topic->update($request->all());
         return $this->responseSuccess('修改成功');
     }
+
+    public function destroy(Request $request)
+    {
+        $this->validate($request, [
+            'id' => 'required',
+        ]);
+        $topic = Topic::find($request->id);
+        $this->authorize('destroy', $topic);
+        $topic->delete();
+        return $this->responseSuccess('删除成功');
+    }
 }

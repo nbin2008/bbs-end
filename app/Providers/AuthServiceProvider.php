@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Models\Topic;
 use App\Models\User;
 use App\Policies\TopicPolicy;
 use App\Policies\UserPolicy;
@@ -18,7 +19,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         'App\Model' => 'App\Policies\ModelPolicy',
         User::class => UserPolicy::class,
-        User::class => TopicPolicy::class,
+        Topic::class => TopicPolicy::class,
     ];
 
     /**

@@ -13,9 +13,14 @@ class TopicPolicy
     /**
      * Create a new policy instance.
      *
-     * @return void
+     * @return bool
      */
     public function update(User $user, Topic $topic)
+    {
+        return $user->id == $topic->user_id;
+    }
+
+    public function destroy(User $user, Topic $topic)
     {
         return $user->id == $topic->user_id;
     }
