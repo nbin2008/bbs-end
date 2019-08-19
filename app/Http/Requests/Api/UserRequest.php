@@ -24,6 +24,8 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
+            'captcha_key' => 'required',
+            'captcha_code' => 'required',
             'name' => 'required|between:3,25|regex:/^[A-Za-z0-9\-\_]+$/|unique:users,name',
             'email' => 'required|email',
             'password' => 'required|string|min:6',

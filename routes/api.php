@@ -30,5 +30,7 @@ $api->version('v1', [
     ], function ($api) {
         // 用户注册
         $api->post('users', 'UsersController@store')->name('api.users.store');
+        // 图片验证码
+        $api->get('captchas', 'CaptchasController@show')->name('api.captchas.show');
     });
 });
