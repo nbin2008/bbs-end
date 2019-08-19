@@ -37,6 +37,8 @@ $api->version('v1', [
         $api->post('authorizations/update', 'AuthorizationsController@update')->name('api.authorizations.update');
         // 删除token
         $api->post('authorizations/delete', 'AuthorizationsController@destroy')->name('api.authorizations.destroy');
+        // 游客可以访问的接口
+        $api->get('categories', 'CategoriesController@index')->name('api.categories.index');
 
         // 需要token验证的接口
         $api->group(['middleware' => 'api.auth'], function ($api){
