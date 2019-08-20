@@ -45,6 +45,10 @@ $api->version('v1', [
         $api->get('topics/user', 'TopicsController@userIndex')->name('api.topics.user.index');
         // 话题详情
         $api->get('topics/show', 'TOpicsController@show')->name('api.topics.show');
+        // 话题回复列表
+        $api->get('topics/reply/index', 'RepliesController@index')->name('api.topics.reply.index');
+        // 某个用户的回复列表
+        $api->get('users/reply/index', 'RepliesController@userIndex')->name('api.users.reply.index');
 
         // 需要token验证的接口
         $api->group(['middleware' => 'api.auth'], function ($api){
@@ -60,6 +64,10 @@ $api->version('v1', [
             $api->post('topics/update', 'TopicsController@update')->name('api.topics.update');
             // 删除话题
             $api->post('topics/delete', 'TopicsController@destroy')->name('api.topics.destroy');
+            // 发布回复
+            $api->post('topics/reply/store', 'RepliesController@store')->name('api.topics.reply.store');
+            // 删除回复
+            $api->post('topics/reply/destroy', 'RepliesController@destroy')->name('api.topics.reply.destroy');
         });
     });
 });
