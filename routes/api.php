@@ -68,6 +68,12 @@ $api->version('v1', [
             $api->post('topics/reply/store', 'RepliesController@store')->name('api.topics.reply.store');
             // 删除回复
             $api->post('topics/reply/destroy', 'RepliesController@destroy')->name('api.topics.reply.destroy');
+            // 通知解表
+            $api->get('user/notifications', 'NotificationsController@index')->name('api.user.notifications.index');
+            // 通知统计
+            $api->get('user/notifications/stats', 'NotificationsController@stats')->name('api.user.notifications.stats');
+            // 编辑消息通知为已读
+            $api->post('user/notifications/read', 'NotificationsController@read')->name('api.user.notifications.read');
         });
     });
 });
