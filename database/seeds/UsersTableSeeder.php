@@ -36,12 +36,14 @@ class UsersTableSeeder extends Seeder
         $user->name = 'admin';
         $user->email = 'admin@qq.com';
         $user->avatar = 'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png?imageView2/1/w/200/h/200';
+        $user->assignRole('Founder');
         $user->save();
 
         $user = User::find(2);
         $user->name = 'nbin1';
         $user->email = 'nbin1@qq.com';
         $user->avatar = 'https://cdn.learnku.com/uploads/images/201710/14/1/ZqM7iaP4CR.png?imageView2/1/w/200/h/200';
+        $user->assignRole('Maintainer');
         $user->save();
     }
 }
